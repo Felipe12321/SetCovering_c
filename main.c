@@ -3,6 +3,7 @@
 #include "read.h"
 #include "receptor.h"
 #include "transmisor.h"
+#include "set_data.h"
 
 int main(int argc, char const *argv[])
 {
@@ -20,8 +21,18 @@ int main(int argc, char const *argv[])
     for(int i = 0; i < params[2]; i++)
         receptores[i] = malloc(params[0] * sizeof(Receptor));   
     
-
     read_receptores(params[0], params[2], receptores);
+
+    printf("Reading Data File...\n");
+    for (int t = 0; t < params[2]; t++){
+        set_data set_data = read_in_set_data(params[0], params[1], t);
+    }
+
+    printf("Done.\n");
+    printf("Init Set Covering...\n");
+
+    
+
 
 
     for (int i = 0; i < params[2]; i++)
@@ -31,5 +42,5 @@ int main(int argc, char const *argv[])
             //printf("%d - (%d, %d) - %c\n", receptores[i][j].id, receptores[i][j].pos_x, receptores[i][j].pos_y, receptores[i][j].frecuencia);
         }
     }
-        return 0;
+    return 0;
 }
