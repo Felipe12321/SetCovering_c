@@ -2,7 +2,7 @@ PROGRAM = setcover
 C_FILES := $(shell find . ! -name "Test*" -name "*.c")
 OBJS := $(patsubst %.c, %.o, $(C_FILES))
 CC = gcc 
-CFLAGS = -Wall -m64 -ffast-math -ftree-vectorize -O3 -Wno-write-strings 
+CFLAGS = -Wall -m64 -ffast-math -ftree-vectorize -O3 -Wno-write-strings -g
 LDFLAGS =
 
 all: $(PROGRAM)

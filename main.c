@@ -4,6 +4,7 @@
 #include "receptor.h"
 #include "transmisor.h"
 #include "set_data.h"
+#include "set_cover.h"
 
 int main(int argc, char const *argv[])
 {
@@ -26,21 +27,16 @@ int main(int argc, char const *argv[])
     printf("Reading Data File...\n");
     for (int t = 0; t < params[2]; t++){
         set_data set_data = read_in_set_data(params[0], params[1], t);
+
+        set_cover setcover = new_setCover(set_data.set_count,           //cantidad de transmisores
+                           set_data.uniqu_element_count, //cantidad de receptores
+                           set_data.max_weight,          //cantidad maxima de receptores en todos los transmisores
+                           set_data.all_element_count,   //total de conexiones
+                           set_data.element_size_lookup);
+
+        printf("Init Set Covering...\n");
+        printf("Done.\n");
     }
 
-    printf("Done.\n");
-    printf("Init Set Covering...\n");
-
-    
-
-
-
-    for (int i = 0; i < params[2]; i++)
-    {
-        for (int j = 0; j < params[0]; j++)
-        {
-            //printf("%d - (%d, %d) - %c\n", receptores[i][j].id, receptores[i][j].pos_x, receptores[i][j].pos_y, receptores[i][j].frecuencia);
-        }
-    }
     return 0;
 }
